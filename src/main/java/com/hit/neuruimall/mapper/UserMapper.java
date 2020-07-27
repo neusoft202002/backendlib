@@ -10,6 +10,8 @@ public interface UserMapper {
 
     public List<UserModel> selectByAll();
 
+    public List<Integer> selectAllId();
+
     public List<UserModel> selectByAllWithAddress();
 
     public UserModel selectById(Integer id);

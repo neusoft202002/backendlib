@@ -20,6 +20,11 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<Integer> getAllId() {
+        return userMapper.selectAllId();
+    }
+
+    @Override
     public List<UserModel> getByAllWithAddress() {
         return userMapper.selectByAllWithAddress();
     }

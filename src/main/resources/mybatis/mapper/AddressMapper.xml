@@ -12,5 +12,28 @@
         <result property="address" column="ADDRESS"/>
     </resultMap>
 
+    <select id="selectById" resultMap="addressMap">
+        select * from address where USERID=#{userId} and ADDRESSID=#{addressId}
+    </select>
+
+    <insert id="insert">
+        insert into address (USERID, ADDRESSID, RECEIVERNAME, PHONE, ADDRESS) values (#{userId}, #{addressId}, #{receiverName}, #{phone}, #{address})
+    </insert>
+
+    <delete id="deleteById">
+        delete from address where USERID= #{userId} and ADDRESSID=#{addressId}
+    </delete>
+
+    <select id="selectUserAddressId" resultType="Integer">
+        select ADDRESSID from address where USERID=#{id}
+    </select>
+
+    <update id="update">
+        update address set RECEIVERNAME=#{receiverName}, PHONE=#{phone}, ADDRESS=#{address} where USERID=#{userId} and  ADDRESSID=#{addressId}
+    </update>
+
+    <select id="selectUserMaxAddressId" resultType="Integer">
+        select max(ADDRESSID) from address where USERID=#{userId}
+    </select>
 
 </mapper>

@@ -8,6 +8,8 @@ public interface IUserService {
 
     public List<UserModel> getByAll();
 
+    public List<Integer> getAllId();
+
     public List<UserModel> getByAllWithAddress();
 
     public UserModel getById(Integer id);

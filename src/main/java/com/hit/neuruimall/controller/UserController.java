@@ -19,6 +19,11 @@ public class UserController {
         return userService.getByAll();
     }
 
+    @GetMapping("/getAllId")
+    public List<Integer> getAllId() {
+        return userService.getAllId();
+    }
+
     @GetMapping("/getAddress")
     public List<UserModel> getAllUserWithAddress() {
         return userService.getByAllWithAddress();
@@ -31,6 +36,7 @@ public class UserController {
 
     @PostMapping("/insertUser")
     public boolean insertUser(UserModel userModel) {
+//        System.out.println(userModel);
         userService.insert(userModel);
         return true;
     }
@@ -42,10 +48,10 @@ public class UserController {
     }
 
     @RequestMapping("/deleteUser/{id}")
-    public boolean deleteById(@PathVariable("id") Integer id) {
-        System.out.println(id);
-//        userService.deleteById(id);
-        return true;
+    public List<UserModel> deleteById(@PathVariable("id") Integer id) {
+//        System.out.println(id);
+        userService.deleteById(id);
+        return userService.getByAll();
     }
 
 }

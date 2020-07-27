@@ -1,6 +1,8 @@
 package com.hit.neuruimall.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.ibatis.type.Alias;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,7 @@ public class UserModel {
 
     private int id;
     private String name;
-    private int age;
+    private Integer age;
     private String sex;
     private Date birthday;
 
@@ -32,11 +34,11 @@ public class UserModel {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

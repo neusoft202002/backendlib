@@ -28,6 +28,10 @@
         select * from user
     </select>
 
+    <select id="selectAllId" resultType="Integer">
+        select USERID from user
+    </select>
+
     <select id="selectByAllWithAddress" resultMap="userWithAddressMap">
         select * from user left join address on user.USERID = address.USERID
     </select>

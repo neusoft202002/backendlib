@@ -30,6 +30,11 @@ class UserMapperTest {
     }
 
     @Test
+    void selectAllId() {
+        System.out.println(userMapper.selectAllId());
+    }
+
+    @Test
     void selectById() {
         System.out.println(userMapper.selectById(1));
     }
