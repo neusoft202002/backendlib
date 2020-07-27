@@ -10,11 +10,13 @@ public interface UserMapper {
 
     public List<UserModel> selectByAll();
 
+    public List<UserModel> selectByAllWithAddress();
+
     public UserModel selectById(Integer id);
 
-    public UserModel insert(UserModel userModel);
+    public void insert(UserModel userModel);
 
-    public UserModel update(UserModel userModel);
+    public void update(UserModel userModel);
 
     public void deleteById(Integer id);
 }

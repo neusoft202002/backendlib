@@ -11,13 +11,12 @@ import org.springframework.web.bind.support.SessionStatus;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@Controller
+@RestController
 public class LoginAndLogoutController {
 
     @Autowired
     IAdminUserService userService;
 
-    @ResponseBody
     @PostMapping("/login")
     public void login(@RequestParam("name") String username,
                       @RequestParam("password") String password,
@@ -29,7 +28,6 @@ public class LoginAndLogoutController {
         }
     }
 
-    @ResponseBody
     @GetMapping("/logout")
     public boolean logout(HttpSession session, SessionStatus sessionStatus) {
         session.invalidate();
@@ -37,7 +35,6 @@ public class LoginAndLogoutController {
         return true;
     }
 
-    @ResponseBody
     @RequestMapping("/find")
     public List<AdminUserModel> findAllUser() {
         return userService.findAllUser();

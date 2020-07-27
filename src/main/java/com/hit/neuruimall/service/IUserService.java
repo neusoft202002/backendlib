@@ -8,11 +8,13 @@ public interface IUserService {
 
     public List<UserModel> getByAll();
 
+    public List<UserModel> getByAllWithAddress();
+
     public UserModel getById(Integer id);
 
-    public UserModel insert(UserModel userModel);
+    public void insert(UserModel userModel);
 
-    public UserModel update(UserModel userModel);
+    public void update(UserModel userModel);
 
     public void deleteById(Integer id);
 }

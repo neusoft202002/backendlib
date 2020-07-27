@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.UserMapper">
+
+    <resultMap id="userMap" type="user" >
+        <id property="id" column="USERID"/>
+        <result property="name" column="USERNAME"/>
+        <result property="age" column="USERAGE"/>
+        <result property="sex" column="USERSEX"/>
+        <result property="birthday" column="USERBIRTHDAY"/>
+    </resultMap>
+
+    <resultMap id="addressMap" type="address">
+        <id property="userId" column="USERID"/>
+        <id property="addressId" column="ADDRESSID"/>
+        <result property="receiverName" column="RECEIVERNAME"/>
+        <result property="phone" column="PHONE"/>
+        <result property="address" column="ADDRESS"/>
+    </resultMap>
+
+    <resultMap id="userWithAddressMap" type="user" extends="userMap">
+        <collection property="address" resultMap="com.hit.neuruimall.mapper.AddressMapper.addressMap"/>
+    </resultMap>
+
+    <select id="selectByAll" resultMap="userMap">
+        select * from user
+    </select>
+
+    <select id="selectByAllWithAddress" resultMap="userWithAddressMap">
+        select * from user left join address on user.USERID = address.USERID
+    </select>
+
+    <select id="selectById" resultMap="userWithAddressMap">
+        select * from user left join address on user.USERID = address.USERID WHERE user.USERID = #{id}
+    </select>
+
+    <insert id="insert" keyProperty="id"   keyColumn="USERID"  useGeneratedKeys="true">
+        insert into user (USERID, USERNAME, USERAGE, USERSEX, USERBIRTHDAY) values (#{id}, #{name}, #{age}, #{sex}, #{birthday})
+    </insert>
+
+    <update id="update">
+        update user set USERNAME=#{name}, USERAGE=#{age}, USERSEX=#{sex}, USERBIRTHDAY=#{birthday} where USERID=#{id}
+    </update>
+
+    <delete id="deleteById">
+        delete from user where USERID = #{id}
+    </delete>
+
+</mapper>

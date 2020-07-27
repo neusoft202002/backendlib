@@ -10,11 +10,11 @@ public class UserModel {
 
     private int id;
     private String name;
-    private String age;
+    private int age;
     private String sex;
     private Date birthday;
 
-    private List<String> address;
+    private List<AddressModel> address;
 
     public int getId() {
         return id;
@@ -32,11 +32,11 @@ public class UserModel {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -56,11 +56,11 @@ public class UserModel {
         this.birthday = birthday;
     }
 
-    public List<String> getAddress() {
+    public List<AddressModel> getAddress() {
         return address;
     }
 
-    public void setAddress(List<String> address) {
+    public void setAddress(List<AddressModel> address) {
         this.address = address;
     }
 

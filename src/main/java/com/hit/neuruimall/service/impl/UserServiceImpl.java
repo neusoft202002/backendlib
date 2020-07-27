@@ -20,22 +20,27 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public List<UserModel> getByAllWithAddress() {
+        return userMapper.selectByAllWithAddress();
+    }
+
+    @Override
     public UserModel getById(Integer id) {
-        return null;
+        return userMapper.selectById(id);
     }
 
     @Override
-    public UserModel insert(UserModel userModel) {
-        return null;
+    public void insert(UserModel userModel) {
+        userMapper.insert(userModel);
     }
 
     @Override
-    public UserModel update(UserModel userModel) {
-        return null;
+    public void update(UserModel userModel) {
+        userMapper.update(userModel);
     }
 
     @Override
     public void deleteById(Integer id) {
-
+        userMapper.deleteById(id);
     }
 }
