@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.StocksMapper">
+
+    <resultMap id="stocksMap" type="stocks">
+        <id property="proId" column="PROID"/>
+        <result property="quantity" column="QUANTITY"/>
+        <result property="warehouse" column="WAREHOUSE"/>
+    </resultMap>
+
+
+
+    <update id="updateQuantity">
+        update stocks set QUANTITY=#{quantity} where PROID=#{proId}
+    </update>
+
+    <update id="update">
+        update stocks set WAREHOUSE=#{warehouse}, QUANTITY=#{quantity} where PROID=#{proId}
+    </update>
+
+    <insert id="insert">
+        insert into stocks (PROID, QUANTITY, WAREHOUSE) VALUES (#{proId}, #{quantity}, #{warehouse})
+    </insert>
+
+</mapper>

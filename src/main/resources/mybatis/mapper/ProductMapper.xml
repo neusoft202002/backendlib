@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.ProductMapper">
+    
+    <resultMap id="productMap" type="product">
+        <id property="proId" column="PROID"/>
+        <result property="proName" column="PRONAME"/>
+        <result property="producer" column="PRODUCER"/>
+        <result property="proAddress" column="PROADDRESS"/>
+    </resultMap>
+
+    <resultMap id="productWithAddressMap" type="product" extends="productMap">
+        <association property="stocks" resultMap="com.hit.neuruimall.mapper.StocksMapper.stocksMap"/>
+    </resultMap>
+
+    <select id="selectByAll" resultMap="productMap">
+        select * from product
+    </select>
+
+    <select id="selectByAllWithStocks" resultMap="productWithAddressMap">
+        select * from product natural join stocks
+    </select>
+
+    <delete id="deleteById">
+        delete from product where PROID=#{id}
+    </delete>
+
+    <insert id="insert"  keyProperty="proId"   keyColumn="PROID"  useGeneratedKeys="true">
+        insert into product (PRONAME, PRODUCER, PROADDRESS) values (#{proName}, #{producer}, #{proAddress})
+    </insert>
+
+    <select id="selectAllId" resultType="Integer">
+        select PROID from product
+    </select>
+
+    <select id="selectById" resultMap="productWithAddressMap">
+        select * from product natural join stocks where PROID=#{proId}
+    </select>
+
+    <update id="update">
+        update product set PRONAME=#{proName}, PRODUCER=#{producer}, PROADDRESS=#{proAddress} where PROID=#{proId}
+    </update>
+
+</mapper>
