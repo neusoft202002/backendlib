@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.WarningMapper">
+
+    <resultMap id="orderWarningMap" type="warning">
+        <id property="warningId" column="ORDERWARNINGID"/>
+        <result property="warningInfo" column="ORDERWARNINGINFO"/>
+        <result property="warningDate" column="ORDERWARNINGDATE"/>
+    </resultMap>
+
+    <resultMap id="stocksWarningMap" type="warning">
+        <id property="warningId" column="STOCKSWARNINGID"/>
+        <result property="warningInfo" column="STOCKSWARNINGINFO"/>
+        <result property="warningDate" column="STOCKSWARNINGDATE"/>
+    </resultMap>
+
+    <resultMap id="userWarningMap" type="warning">
+        <id property="warningId" column="USERWARNINGID"/>
+        <result property="warningInfo" column="USERWARNINGINFO"/>
+        <result property="warningDate" column="USERWARNINGDATE"/>
+    </resultMap>
+
+    <select id="selectOrderWarning" resultMap="orderWarningMap">
+        select * from orderwarning
+    </select>
+
+    <select id="selectStocksWarning" resultMap="stocksWarningMap">
+        select * from stockswarning
+    </select>
+
+    <select id="selectUserWarning" resultMap="userWarningMap">
+        select * from userwarning
+    </select>
+
+    <insert id="insertOrderWarning">
+        insert into orderwarning (ORDERWARNINGINFO, ORDERWARNINGDATE) values (#{warningInfo}, #{warningDate})
+    </insert>
+
+    <insert id="insertStocksWarning">
+        insert into stockswarning (STOCKSWARNINGINFO, STOCKSWARNINGDATE) values (#{warningInfo}, #{warningDate})
+    </insert>
+
+    <insert id="insertUserWarning">
+        insert into userwarning (USERWARNINGINFO, USERWARNINGDATE) values (#{warningInfo}, #{warningDate})
+    </insert>
+
+    <update id="updateOrderWarning" >
+        update orderwarning set ORDERWARNINGINFO=#{warningInfo}, ORDERWARNINGDATE=#{warningDate} where ORDERWARNINGID=#{warningId}
+    </update>
+
+    <update id="updateStocksWarning" >
+        update stockswarning set STOCKSWARNINGINFO=#{warningInfo}, STOCKSWARNINGDATE=#{warningDate} where STOCKSWARNINGID=#{warningId}
+    </update>
+
+    <update id="updateUserWarning" >
+        update userwarning set USERWARNINGINFO=#{warningInfo}, USERWARNINGDATE=#{warningDate} where USERWARNINGID=#{warningId}
+    </update>
+
+    <delete id="deleteOrderWarning">
+        delete from orderwarning where ORDERWARNINGID=#{warningId}
+    </delete>
+
+    <delete id="deleteStocksWarning">
+        delete from stockswarning where STOCKSWARNINGID=#{warningId}
+    </delete>
+
+    <delete id="deleteUserWarning">
+        delete from userwarning where USERWARNINGID=#{warningId}
+    </delete>
+
+</mapper>
