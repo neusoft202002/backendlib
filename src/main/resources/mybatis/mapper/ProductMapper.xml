@@ -6,6 +6,7 @@
     
     <resultMap id="productMap" type="product">
         <id property="proId" column="PROID"/>
+        <result property="price" column="PRICE"/>
         <result property="proName" column="PRONAME"/>
         <result property="producer" column="PRODUCER"/>
         <result property="proAddress" column="PROADDRESS"/>
@@ -28,7 +29,7 @@
     </delete>
 
     <insert id="insert"  keyProperty="proId"   keyColumn="PROID"  useGeneratedKeys="true">
-        insert into product (PRONAME, PRODUCER, PROADDRESS) values (#{proName}, #{producer}, #{proAddress})
+        insert into product (PRONAME, PRICE, PRODUCER, PROADDRESS) values (#{proName}, #{price}, #{producer}, #{proAddress})
     </insert>
 
     <select id="selectAllId" resultType="Integer">
@@ -40,7 +41,7 @@
     </select>
 
     <update id="update">
-        update product set PRONAME=#{proName}, PRODUCER=#{producer}, PROADDRESS=#{proAddress} where PROID=#{proId}
+        update product set PRONAME=#{proName}, PRICE=#{price},PRODUCER=#{producer}, PROADDRESS=#{proAddress} where PROID=#{proId}
     </update>
 
 </mapper>

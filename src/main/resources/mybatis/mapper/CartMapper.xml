@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.CartMapper">
+
+    <resultMap id="cartMap" type="cart">
+        <id property="userId" column="USERID"/>
+        <id property="proId" column="PROID"/>
+        <result property="proName" column="PRONAME"/>
+        <result property="amount" column="AMOUNT"/>
+        <result property="price" column="PRICE"/>
+        <result property="account" column="Account"/>
+    </resultMap>
+
+    <select id="selectByUserId" resultMap="cartMap">
+        SELECT PROID, PRONAME, PRICE, AMOUNT, PRICE*AMOUNT AS ACCOUNT FROM cart NATURAL JOIN product WHERE USERID=#{userId}
+    </select>
+
+    <update id="updateAmount">
+        update cart set AMOUNT=#{amount} where USERID=#{userId} and PROID=#{proId}
+    </update>
+
+    <delete id="deleteById">
+        delete from cart where USERID=#{userId} and PROID=#{proId}
+    </delete>
+
+    <insert id="insert">
+        insert into cart (USERID, PROID, AMOUNT) values (#{userId}, #{proId}, #{amount})
+    </insert>
+
+</mapper>

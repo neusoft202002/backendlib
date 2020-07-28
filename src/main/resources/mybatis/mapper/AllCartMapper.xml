@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.AllCartMapper">
+
+    <resultMap id="allCartMap" type="allCart">
+        <id property="userId" column="USERID"/>
+        <result property="userName" column="USERNAME"/>
+        <result property="account" column="ACCOUNT"/>
+    </resultMap>
+
+
+    <select id="selectByAll" resultMap="allCartMap">
+        SELECT USERID, USERNAME ,SUM(AMOUNT*PRICE) AS ACCOUNT FROM cart NATURAL JOIN user
+         NATURAL JOIN product GROUP BY USERID
+    </select>
+
+</mapper>

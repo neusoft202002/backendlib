@@ -7,6 +7,16 @@ public class ProductModel {
 
     private int proId;
     private String proName;
+    private double price;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     private String producer;
     private String proAddress;
     private StocksModel stocks;
