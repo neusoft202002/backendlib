@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="order">
+        <id property="orderId" column="ORDERID"/>
+        <result property="userId" column="USERID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="statusId" column="STATUSID"/>
+        <result property="statusInfo" column="STATUSINFO"/>
+        <result property="allAccount" column="ALLACCOUNT"/>
+    </resultMap>
+
+    <select id="selectByAll" resultMap="orderMap">
+        select ORDERID, USERID, USERNAME, STATUSID, STATUSINFO, SUM(PRICE*AMOUNT) AS ALLACCOUNT
+        from `order` NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo
+        NATURAL JOIN product GROUP BY ORDERID
+    </select>
+
+    <delete id="deleteById">
+        delete from `order` where ORDERID=#{orderId}
+    </delete>
+    <select id="selectByStatus" resultMap="orderMap">
+        select ORDERID, USERID, USERNAME, STATUSID, STATUSINFO, SUM(PRICE*AMOUNT) AS ALLACCOUNT
+        from `order` NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo
+        NATURAL JOIN product where STATUSID=#{statusId} GROUP BY ORDERID
+    </select>
+
+    <update id="updateStatus">
+        update `order` set STATUSID=#{statusId} where ORDERID=#{orderId}
+    </update>
+    
+    <insert id="insertOrder" keyProperty="orderId"   keyColumn="ORDERID"  useGeneratedKeys="true">
+        insert into `order` (USERID, STATUSID) values (#{userId}, 1)
+    </insert>
+
+    <insert id="insertOrderInfo">
+        insert into orderinfo (ORDERID, PROID, AMOUNT) values (#{orderId}, #{proId}, #{amount})
+    </insert>
+
+</mapper>

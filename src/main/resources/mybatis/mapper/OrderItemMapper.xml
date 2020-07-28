@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.OrderItemMapper">
+
+    <resultMap id="orderItemMap" type="orderItem">
+        <result property="userId" column="USERID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="proId" column="PROID"/>
+        <result property="proName" column="PRONAME"/>
+        <result property="price" column="PRICE"/>
+        <result property="amount" column="AMOUNT"/>
+        <result property="account" column="ACCOUNT"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="orderItemMap">
+        select USERID, USERNAME, PROID, PRONAME, PRICE, AMOUNT, PRICE* AMOUNT AS ACCOUNT from `order`
+        NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo NATURAL JOIN product WHERE ORDERID=#{orderId}
+    </select>
+
+    <select id="selectAllOrderId" resultType="Integer">
+        select ORDERID from `order`
+    </select>
+
+</mapper>
