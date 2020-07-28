@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hit.neuruimall.mapper.DeliveryMapper">
+
+    <resultMap id="deliveryMap" type="delivery">
+        <id property="deliveryId" column="DELIVERYID"/>
+        <result property="orderId" column="ORDERID"/>
+        <result property="userId" column="USERID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="deliveryStatusId" column="DELIVERYSTATUSID"/>
+        <result property="deliveryStatusInfo" column="DELIVERYSTATUSINFO"/>
+    </resultMap>
+
+    <select id="selectAllDelivery" resultMap="deliveryMap">
+        SELECT DELIVERYID, ORDERID, USERID, USERNAME, DELIVERYSTATUSID, DELIVERYSTATUSINFO  FROM delivery
+        NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user`
+    </select>
+
+    <select id="selectByStatus" resultMap="deliveryMap">
+        SELECT DELIVERYID, ORDERID, USERID, USERNAME, DELIVERYSTATUSID, DELIVERYSTATUSINFO  FROM delivery
+        NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user` where DELIVERYSTATUSID=#{deliveryStatusId}
+    </select>
+
+    <delete id="deleteById">
+        delete from delivery where DELIVERYID=#{deliveryId}
+    </delete>
+
+    <insert id="insert">
+        insert into delivery (ORDERID, DELIVERYSTATUSID) VALUES (#{orderId}, 1)
+    </insert>
+
+    <update id="updateStatus">
+        update delivery set DELIVERYSTATUSID=#{deliveryStatusId} where DELIVERYID=#{deliveryId}
+    </update>
+
+</mapper>

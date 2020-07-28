@@ -21,4 +21,6 @@ public interface OrderMapper {
     public void insertOrder(OrderModel orderModel);
 
     public void insertOrderInfo(Integer orderId, Integer proId, Integer amount);
+
+    public List<Integer> selectIdWithoutDelivery();
 }

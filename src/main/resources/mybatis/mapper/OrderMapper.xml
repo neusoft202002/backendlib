@@ -40,4 +40,8 @@
         insert into orderinfo (ORDERID, PROID, AMOUNT) values (#{orderId}, #{proId}, #{amount})
     </insert>
 
+    <select id="selectIdWithoutDelivery" resultType="Integer">
+        select ORDERID from `order` where ORDERID not in (select ORDERID from delivery)
+    </select>
+
 </mapper>

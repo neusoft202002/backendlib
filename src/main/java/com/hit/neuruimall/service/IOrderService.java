@@ -15,4 +15,6 @@ public interface IOrderService {
     public void updateStatus(Integer orderId, Integer statusId);
 
     public void insert(Integer userId, String proIds, String amounts);
+
+    public List<Integer> getIdWithoutDelivery();
 }

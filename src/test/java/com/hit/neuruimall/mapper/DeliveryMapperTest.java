@@ -7,23 +7,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class OrderMapperTest {
+class DeliveryMapperTest {
 
     @Autowired
-    OrderMapper orderMapper;
+    private DeliveryMapper deliveryMapper;
 
     @Test
-    void selectByAll() {
-        System.out.println(orderMapper.selectByAll());
+    void selectAllDelivery() {
+        System.out.println(deliveryMapper.selectAllDelivery());
     }
 
     @Test
-    void selectByStatus() {
-        System.out.println(orderMapper.selectByStatus(1));
+    void deleteById() {
     }
 
     @Test
-    void selectIdWithoutDelivery() {
-        System.out.println(orderMapper.selectIdWithoutDelivery());
+    void insert() {
+    }
+
+    @Test
+    void updateStatus() {
+        deliveryMapper.updateStatus(5, 1);
     }
 }

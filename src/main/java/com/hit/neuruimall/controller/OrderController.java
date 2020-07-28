@@ -42,4 +42,9 @@ public class OrderController {
         orderService.insert(userId, proIds, amounts);
         return true;
     }
+
+    @GetMapping("/getIdWithoutDelivery")
+    public List<Integer> getIdWithoutDelivery() {
+        return orderService.getIdWithoutDelivery();
+    }
 }

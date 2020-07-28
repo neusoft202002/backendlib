@@ -47,4 +47,9 @@ public class OrderServiceImpl implements IOrderService {
             orderMapper.insertOrderInfo(orderId, Integer.parseInt(proIdArray[i]), Integer.parseInt(amountArray[i]));
         }
     }
+
+    @Override
+    public List<Integer> getIdWithoutDelivery() {
+        return orderMapper.selectIdWithoutDelivery();
+    }
 }
