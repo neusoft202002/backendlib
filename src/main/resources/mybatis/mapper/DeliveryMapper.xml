@@ -35,4 +35,9 @@
         update delivery set DELIVERYSTATUSID=#{deliveryStatusId} where DELIVERYID=#{deliveryId}
     </update>
 
+    <select id="selectAllDeliveryWithUserId" resultMap="deliveryMap">
+        SELECT DELIVERYID, ORDERID, USERID, USERNAME, DELIVERYSTATUSID, DELIVERYSTATUSINFO  FROM delivery
+        NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user` WHERE USERID=#{userId}
+    </select>
+
 </mapper>

@@ -20,6 +20,11 @@ public class DeliveryController {
         return deliveryService.getAllDelivery();
     }
 
+    @GetMapping("/getAllDeliveryWithUserId")
+    public List<DeliveryModel> getAllDeliveryWithUserId(Integer userId) {
+        return deliveryService.getAllDeliveryWithUserId(userId);
+    }
+
     @GetMapping("/getDeliveryByStatus")
     public List<DeliveryModel> getDeliveryByStatus(Integer deliveryStatusId) {
         return deliveryService.getByStatus(deliveryStatusId);
@@ -40,5 +45,10 @@ public class DeliveryController {
     @PostMapping("/updateDeliveryStatus")
     public List<DeliveryModel> updateStatus(Integer deliveryId, Integer deliveryStatusId, Integer oldStatusId) {
         return deliveryService.updateStatus(deliveryId, deliveryStatusId, oldStatusId);
+    }
+
+    @GetMapping("/userUpdateStatus")
+    public List<DeliveryModel> userUpdateStatus(Integer userId, Integer deliveryId, Integer deliveryStatusId) {
+        return deliveryService.userUpdateStatus(userId, deliveryId, deliveryStatusId);
     }
 }

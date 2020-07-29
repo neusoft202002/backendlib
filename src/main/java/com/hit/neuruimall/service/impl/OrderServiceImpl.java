@@ -20,6 +20,11 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public List<OrderModel> getByAllById(Integer userId) {
+        return orderMapper.selectByAllById(userId);
+    }
+
+    @Override
     public List<OrderModel> getByStatus(Integer statusId) {
         return orderMapper.selectByStatus(statusId);
     }

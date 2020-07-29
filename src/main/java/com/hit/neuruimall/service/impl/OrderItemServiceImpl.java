@@ -23,4 +23,9 @@ public class OrderItemServiceImpl implements IOrderItemService {
     public List<OrderItemModel> getById(Integer orderId) {
         return orderItemMapper.selectById(orderId);
     }
+
+    @Override
+    public List<Integer> getAllOrderIdWithUserId(Integer userId) {
+        return orderItemMapper.selectAllOrderIdWithUserId(userId);
+    }
 }

@@ -8,6 +8,8 @@ public interface IOrderService {
 
     public List<OrderModel> getByAll();
 
+    public List<OrderModel> getByAllById(Integer userId);
+
     public List<OrderModel> getByStatus(Integer statusId);
 
     public void deleteById(Integer orderId);

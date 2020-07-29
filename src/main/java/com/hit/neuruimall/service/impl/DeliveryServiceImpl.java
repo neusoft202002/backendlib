@@ -20,6 +20,12 @@ public class DeliveryServiceImpl implements IDeliveryService {
     }
 
     @Override
+    public List<DeliveryModel> getAllDeliveryWithUserId(Integer userId) {
+        return deliveryMapper.selectAllDeliveryWithUserId(userId);
+    }
+
+
+    @Override
     public List<DeliveryModel> getByStatus(Integer deliveryStatusId) {
         return deliveryMapper.selectByStatus(deliveryStatusId);
     }
@@ -38,5 +44,11 @@ public class DeliveryServiceImpl implements IDeliveryService {
     public List<DeliveryModel> updateStatus(Integer deliveryId, Integer deliveryStatusId, Integer oldStatusId) {
         deliveryMapper.updateStatus(deliveryId, deliveryStatusId);
         return deliveryMapper.selectByStatus(oldStatusId);
+    }
+
+    @Override
+    public List<DeliveryModel> userUpdateStatus(Integer userId, Integer deliveryId, Integer deliveryStatusId) {
+        deliveryMapper.updateStatus(deliveryId, deliveryStatusId);
+        return deliveryMapper.selectAllDeliveryWithUserId(userId);
     }
 }

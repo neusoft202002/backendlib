@@ -14,4 +14,6 @@ public interface OrderItemMapper {
 
     public List<OrderItemModel> selectById(Integer orderId);
 
+    public List<Integer> selectAllOrderIdWithUserId(Integer userId);
+
 }

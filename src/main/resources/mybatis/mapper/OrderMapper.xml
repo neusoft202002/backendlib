@@ -19,6 +19,12 @@
         NATURAL JOIN product GROUP BY ORDERID
     </select>
 
+    <select id="selectByAllById" resultMap="orderMap">
+        select ORDERID, USERID, USERNAME, STATUSID, STATUSINFO, SUM(PRICE*AMOUNT) AS ALLACCOUNT
+        from `order` NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo
+        NATURAL JOIN product WHERE USERID=#{userId} GROUP BY ORDERID
+    </select>
+
     <delete id="deleteById">
         delete from `order` where ORDERID=#{orderId}
     </delete>

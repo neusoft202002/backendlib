@@ -23,4 +23,7 @@
         select ORDERID from `order`
     </select>
 
+    <select id="selectAllOrderIdWithUserId" resultType="Integer">
+        select ORDERID from `order` where USERID=#{userId}
+    </select>
 </mapper>

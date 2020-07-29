@@ -19,6 +19,11 @@ public class OrderItemController {
         return orderItemService.getAllOrderId();
     }
 
+    @GetMapping("/getAllOrderIdWithUserId")
+    public List<Integer> getAllOrderIdWithUserId(Integer userId) {
+        return orderItemService.getAllOrderIdWithUserId(userId);
+    }
+
     @GetMapping("/getOrderById")
     public List<OrderItemModel> getOrderById(Integer orderId) {
         return orderItemService.getById(orderId);

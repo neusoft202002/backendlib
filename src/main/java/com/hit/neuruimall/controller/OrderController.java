@@ -20,6 +20,11 @@ public class OrderController {
         return orderService.getByAll();
     }
 
+    @GetMapping("/getAllOrderById")
+    public List<OrderModel> getByAllById(Integer userId) {
+        return orderService.getByAllById(userId);
+    }
+
     @GetMapping("/getOrderByStatus")
     public List<OrderModel> getByStatus(Integer statusId){
         return orderService.getByStatus(statusId);
