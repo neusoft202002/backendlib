@@ -4,10 +4,13 @@ import com.hit.neuruimall.model.WarningModel;
 import com.hit.neuruimall.service.IWarningService;
 import com.hit.neuruimall.service.impl.WarningServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,6 +32,21 @@ public class WarningController {
     @GetMapping("/getUserWarning")
     public List<WarningModel> getUserWarning() {
         return warningService.getUserWarning();
+    }
+
+    @PostMapping("/getOrderWarningDynamic")
+    public List<WarningModel> getOrderWarningDynamic(String info, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date startDate, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date endDate) {
+        return warningService.getOrderWarningDynamic(info, startDate, endDate);
+    }
+
+    @PostMapping("/getStocksWarningDynamic")
+    public List<WarningModel> getStocksWarningDynamic(String info, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date startDate, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date endDate) {
+        return warningService.getStocksWarningDynamic(info, startDate, endDate);
+    }
+
+    @PostMapping("/getUserWarningDynamic")
+    public List<WarningModel> getUserWarningDynamic(String info, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date startDate, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date endDate) {
+        return warningService.getUserWarningDynamic(info, startDate, endDate);
     }
 
     @PostMapping("/insertOrderWarning")

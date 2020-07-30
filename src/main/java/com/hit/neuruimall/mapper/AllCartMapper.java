@@ -11,4 +11,6 @@ import java.util.List;
 public interface AllCartMapper {
 
     public List<AllCartModel> selectByAll();
+
+    public List<AllCartModel> selectByAllDynamic(String dynamicUsername, Integer minAccount, Integer maxAccount);
 }

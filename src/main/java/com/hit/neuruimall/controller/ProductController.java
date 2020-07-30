@@ -21,6 +21,11 @@ public class ProductController {
         return productService.getByAll();
     }
 
+    @PostMapping("/getByAllProductDynamic")
+    public List<ProductModel> getByAllDynamic(String DynamicProName, Integer minPrice, Integer maxPrice, String DynamicProducer, String DynamicProAddress) {
+        return productService.getByAllDynamic(DynamicProName, minPrice, maxPrice, DynamicProducer, DynamicProAddress);
+    }
+
     @PostMapping("/insertProduct")
     public ProductModel insert(ProductModel productModel) {
         productService.insert(productModel);

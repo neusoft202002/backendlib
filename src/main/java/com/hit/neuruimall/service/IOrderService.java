@@ -10,6 +10,8 @@ public interface IOrderService {
 
     public List<OrderModel> getByAllById(Integer userId);
 
+    public List<OrderModel> getByAllDynamic(String name, Integer minAccount, Integer maxAccount);
+
     public List<OrderModel> getByStatus(Integer statusId);
 
     public void deleteById(Integer orderId);

@@ -12,6 +12,9 @@ public interface ProductMapper {
 
     public List<ProductModel> selectByAll();
 
+    public List<ProductModel> selectByAllDynamic(String DynamicProName, Integer minPrice, Integer maxPrice,
+                                                 String DynamicProducer, String DynamicProAddress);
+
     public List<ProductModel> selectByAllWithStocks();
 
     public void insert(ProductModel productModel);

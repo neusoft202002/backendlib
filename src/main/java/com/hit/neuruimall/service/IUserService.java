@@ -2,6 +2,7 @@ package com.hit.neuruimall.service;
 
 import com.hit.neuruimall.model.UserModel;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IUserService {
@@ -19,4 +20,6 @@ public interface IUserService {
     public void update(UserModel userModel);
 
     public void deleteById(Integer id);
+
+    public List<UserModel> getDynamic(String username, Integer minAge, Integer maxAge, Date startDate, Date endDate);
 }

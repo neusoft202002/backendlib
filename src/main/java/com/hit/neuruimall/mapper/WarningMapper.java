@@ -4,6 +4,7 @@ import com.hit.neuruimall.model.WarningModel;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -15,6 +16,12 @@ public interface WarningMapper {
     public List<WarningModel> selectStocksWarning();
 
     public List<WarningModel> selectUserWarning();
+
+    public List<WarningModel> selectOrderWarningDynamic(String info, Date startDate, Date endDate);
+
+    public List<WarningModel> selectStocksWarningDynamic(String info, Date startDate, Date endDate);
+
+    public List<WarningModel> selectUserWarningDynamic(String info, Date startDate, Date endDate);
 
     public void insertOrderWarning(WarningModel warningModel);
 

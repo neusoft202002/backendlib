@@ -20,6 +20,20 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
+    public List<ProductModel> getByAllDynamic(String DynamicProName, Integer minPrice, Integer maxPrice, String DynamicProducer, String DynamicProAddress) {
+        if(DynamicProName!=null && DynamicProName.trim().length()>0) {
+            DynamicProName="%"+DynamicProName+"%";
+        }
+        if(DynamicProducer!=null && DynamicProducer.trim().length()>0) {
+            DynamicProducer="%"+DynamicProducer+"%";
+        }
+        if(DynamicProAddress!=null && DynamicProAddress.trim().length()>0) {
+            DynamicProAddress="%"+DynamicProAddress+"%";
+        }
+        return productMapper.selectByAllDynamic(DynamicProName, minPrice, maxPrice, DynamicProducer, DynamicProAddress);
+    }
+
+    @Override
     public List<ProductModel> getByALlWithStocks() {
         return productMapper.selectByAllWithStocks();
     }

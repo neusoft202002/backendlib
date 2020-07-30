@@ -6,6 +6,7 @@ import com.hit.neuruimall.service.IWarningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +28,30 @@ public class WarningServiceImpl implements IWarningService {
     @Override
     public List<WarningModel> getUserWarning() {
         return warningMapper.selectUserWarning();
+    }
+
+    @Override
+    public List<WarningModel> getOrderWarningDynamic(String info, Date startDate, Date endDate) {
+        if(info!=null && info.trim().length()>0) {
+            info="%"+info+"%";
+        }
+        return warningMapper.selectOrderWarningDynamic(info, startDate, endDate);
+    }
+
+    @Override
+    public List<WarningModel> getStocksWarningDynamic(String info, Date startDate, Date endDate) {
+        if(info!=null && info.trim().length()>0) {
+            info="%"+info+"%";
+        }
+        return warningMapper.selectStocksWarningDynamic(info, startDate, endDate);
+    }
+
+    @Override
+    public List<WarningModel> getUserWarningDynamic(String info, Date startDate, Date endDate) {
+        if(info!=null && info.trim().length()>0) {
+            info="%"+info+"%";
+        }
+        return warningMapper.selectUserWarningDynamic(info, startDate, endDate);
     }
 
     @Override

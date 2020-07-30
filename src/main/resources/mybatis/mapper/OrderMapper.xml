@@ -19,6 +19,22 @@
         NATURAL JOIN product GROUP BY ORDERID
     </select>
 
+    <select id="selectByAllDynamic" resultMap="orderMap">
+        select ORDERID, USERID, USERNAME, STATUSID, STATUSINFO, SUM(PRICE*AMOUNT) AS ALLACCOUNT
+        from `order` NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo
+        NATURAL JOIN product
+        <if test="name != ''">
+            where USERNAME like #{name}
+        </if>
+        GROUP BY ORDERID having 1=1
+        <if test="minAccount != null">
+            and ALLACCOUNT &gt;= #{minAccount}
+        </if>
+        <if test="maxAccount != null">
+            and ALLACCOUNT &lt;= #{maxAccount}
+        </if>
+    </select>
+
     <select id="selectByAllById" resultMap="orderMap">
         select ORDERID, USERID, USERNAME, STATUSID, STATUSINFO, SUM(PRICE*AMOUNT) AS ALLACCOUNT
         from `order` NATURAL JOIN `user` NATURAL JOIN `status` NATURAL JOIN orderinfo

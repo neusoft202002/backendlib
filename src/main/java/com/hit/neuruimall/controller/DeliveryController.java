@@ -20,6 +20,11 @@ public class DeliveryController {
         return deliveryService.getAllDelivery();
     }
 
+    @PostMapping("/getAllDeliveryDynamic")
+    public List<DeliveryModel> getAllDeliveryDynamic(String dynamicName) {
+        return deliveryService.getAllDeliveryDynamic(dynamicName);
+    }
+
     @GetMapping("/getAllDeliveryWithUserId")
     public List<DeliveryModel> getAllDeliveryWithUserId(Integer userId) {
         return deliveryService.getAllDeliveryWithUserId(userId);

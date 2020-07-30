@@ -8,6 +8,8 @@ public interface IDeliveryService {
 
     public List<DeliveryModel> getAllDelivery();
 
+    public List<DeliveryModel> getAllDeliveryDynamic(String dynamicName);
+
     public List<DeliveryModel> getAllDeliveryWithUserId(Integer userId);
 
     public List<DeliveryModel> getByStatus(Integer deliveryStatusId);

@@ -12,6 +12,8 @@ public interface DeliveryMapper {
 
     public List<DeliveryModel> selectAllDelivery();
 
+    public List<DeliveryModel> selectAllDeliveryDynamic(String dynamicName);
+
     public List<DeliveryModel> selectAllDeliveryWithUserId(Integer userId);
 
     public List<DeliveryModel> selectByStatus(Integer deliveryStatusId);

@@ -16,4 +16,19 @@
          NATURAL JOIN product GROUP BY USERID
     </select>
 
+    <select id="selectByAllDynamic" resultMap="allCartMap">
+        SELECT USERID, USERNAME ,SUM(AMOUNT*PRICE) AS ACCOUNT FROM cart NATURAL JOIN user
+         NATURAL JOIN product
+        <if test="dynamicUsername != ''">
+            where USERNAME like #{dynamicUsername}
+        </if>
+         GROUP BY USERID having 1=1
+        <if test="minAccount != null">
+            and ACCOUNT &gt;= #{minAccount}
+        </if>
+        <if test="maxAccount != null">
+            and ACCOUNT &lt;= #{maxAccount}
+        </if>
+    </select>
+
 </mapper>

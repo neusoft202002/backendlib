@@ -20,6 +20,27 @@
         select * from product
     </select>
 
+    <select id="selectByAllDynamic" resultMap="productMap">
+        select * from product
+        <where>
+            <if test="DynamicProName != ''">
+                and PRONAME like #{DynamicProName}
+            </if>
+            <if test="minPrice != null">
+                and PRICE &gt;= #{minPrice}
+            </if>
+            <if test="maxPrice != null">
+                and PRICE &lt;= #{maxPrice}
+            </if>
+            <if test="DynamicProducer != ''">
+                and PRODUCER like #{DynamicProducer}
+            </if>
+            <if test="DynamicProAddress != ''">
+                and PROADDRESS like #{DynamicProAddress}
+            </if>
+        </where>
+    </select>
+
     <select id="selectByAllWithStocks" resultMap="productWithAddressMap">
         select * from product natural join stocks
     </select>

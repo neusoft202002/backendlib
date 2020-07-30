@@ -8,6 +8,9 @@ public interface IProductService {
 
     public List<ProductModel> getByAll();
 
+    public List<ProductModel> getByAllDynamic(String DynamicProName, Integer minPrice, Integer maxPrice,
+                                                 String DynamicProducer, String DynamicProAddress);
+
     public List<ProductModel> getByALlWithStocks();
 
     public void insert(ProductModel productModel);

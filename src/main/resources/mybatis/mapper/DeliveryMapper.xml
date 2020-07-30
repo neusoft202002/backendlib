@@ -18,6 +18,16 @@
         NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user`
     </select>
 
+    <select id="selectAllDeliveryDynamic" resultMap="deliveryMap">
+        SELECT DELIVERYID, ORDERID, USERID, USERNAME, DELIVERYSTATUSID, DELIVERYSTATUSINFO  FROM delivery
+        NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user`
+        <where>
+            <if test="dynamicName != ''">
+                AND USERNAME like #{dynamicName}
+            </if>
+        </where>
+    </select>
+
     <select id="selectByStatus" resultMap="deliveryMap">
         SELECT DELIVERYID, ORDERID, USERID, USERNAME, DELIVERYSTATUSID, DELIVERYSTATUSINFO  FROM delivery
         NATURAL JOIN deliverytatus NATURAL JOIN `order` NATURAL JOIN `user` where DELIVERYSTATUSID=#{deliveryStatusId}

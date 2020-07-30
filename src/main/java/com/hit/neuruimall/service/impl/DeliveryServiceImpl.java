@@ -20,6 +20,14 @@ public class DeliveryServiceImpl implements IDeliveryService {
     }
 
     @Override
+    public List<DeliveryModel> getAllDeliveryDynamic(String dynamicName) {
+        if(dynamicName!=null && dynamicName.trim().length()>0) {
+            dynamicName="%"+dynamicName+"%";
+        }
+        return deliveryMapper.selectAllDeliveryDynamic(dynamicName);
+    }
+
+    @Override
     public List<DeliveryModel> getAllDeliveryWithUserId(Integer userId) {
         return deliveryMapper.selectAllDeliveryWithUserId(userId);
     }

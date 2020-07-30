@@ -12,6 +12,8 @@ public interface OrderMapper {
 
     public List<OrderModel> selectByAll();
 
+    public List<OrderModel> selectByAllDynamic(String name, Integer minAccount, Integer maxAccount);
+
     public List<OrderModel> selectByAllById(Integer userId);
 
     public List<OrderModel> selectByStatus(Integer statusId);

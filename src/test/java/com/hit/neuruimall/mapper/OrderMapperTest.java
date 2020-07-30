@@ -18,6 +18,11 @@ class OrderMapperTest {
     }
 
     @Test
+    void selectByAllDynamic() {
+        System.out.println(orderMapper.selectByAllDynamic("%a%", 100, null));
+    }
+
+    @Test
     void selectByStatus() {
         System.out.println(orderMapper.selectByStatus(1));
     }

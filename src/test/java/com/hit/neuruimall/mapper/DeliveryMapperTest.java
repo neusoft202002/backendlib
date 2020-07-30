@@ -18,6 +18,11 @@ class DeliveryMapperTest {
     }
 
     @Test
+    void selectAllDeliveryDynamic() {
+        System.out.println(deliveryMapper.selectAllDeliveryDynamic("%a%"));
+    }
+
+    @Test
     void deleteById() {
     }
 

@@ -37,4 +37,9 @@ class UserServiceImplTest {
     @Test
     void deleteById() {
     }
+
+    @Test
+    void dynamic() {
+        System.out.println(userService.getDynamic("ad", null, null, null, null));
+    }
 }

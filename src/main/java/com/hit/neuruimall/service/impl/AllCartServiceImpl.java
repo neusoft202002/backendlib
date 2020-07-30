@@ -19,4 +19,12 @@ public class AllCartServiceImpl implements IAllCartService {
     public List<AllCartModel> getAllCart() {
         return allCartMapper.selectByAll();
     }
+
+    @Override
+    public List<AllCartModel> getByAllDynamic(String dynamicUsername, Integer minAccount, Integer maxAccount) {
+        if(dynamicUsername!=null && dynamicUsername.trim().length()>0) {
+            dynamicUsername="%"+dynamicUsername+"%";
+        }
+        return allCartMapper.selectByAllDynamic(dynamicUsername, minAccount, maxAccount);
+    }
 }

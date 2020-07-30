@@ -2,8 +2,10 @@ package com.hit.neuruimall.mapper;
 
 import com.hit.neuruimall.model.UserModel;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -23,4 +25,8 @@ public interface UserMapper {
     public void update(UserModel userModel);
 
     public void deleteById(Integer id);
+
+    public List<UserModel> selectDynamic(
+            @Param("username") String username, @Param("minAge") Integer minAge, @Param("maxAge") Integer maxAge
+            , @Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }

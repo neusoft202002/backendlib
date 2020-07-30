@@ -52,4 +52,25 @@
         delete from user where USERID = #{id}
     </delete>
 
+    <select id="selectDynamic" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="username != ''">
+                and USERNAME like #{username}
+            </if>
+            <if test="minAge != null">
+                and USERAGE &gt;= #{minAge}
+            </if>
+            <if test="maxAge != null">
+                and USERAGE &lt;= #{maxAge}
+            </if>
+            <if test="startDate != null">
+                and USERBIRTHDAY &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and USERBIRTHDAY &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
 </mapper>

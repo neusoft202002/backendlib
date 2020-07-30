@@ -20,6 +20,10 @@ public class OrderController {
         return orderService.getByAll();
     }
 
+    @PostMapping("/getAllOrderDynamic")
+    public List<OrderModel> getByAllDynamic(String dynamicUsername, Integer minAccount, Integer maxAccount) {
+        return orderService.getByAllDynamic(dynamicUsername, minAccount, maxAccount);
+    }
     @GetMapping("/getAllOrderById")
     public List<OrderModel> getByAllById(Integer userId) {
         return orderService.getByAllById(userId);

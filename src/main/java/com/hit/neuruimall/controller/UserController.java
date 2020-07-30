@@ -3,9 +3,11 @@ package com.hit.neuruimall.controller;
 import com.hit.neuruimall.model.UserModel;
 import com.hit.neuruimall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -52,6 +54,11 @@ public class UserController {
 //        System.out.println(id);
         userService.deleteById(id);
         return userService.getByAll();
+    }
+
+    @PostMapping("/getUserDynamic")
+    public List<UserModel> getDynamic(String username, Integer minAge, Integer maxAge, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date startDate, @RequestParam(required=false) @DateTimeFormat(pattern="yyyy/MM/dd") Date endDate) {
+        return userService.getDynamic(username, minAge, maxAge, startDate, endDate);
     }
 
 }

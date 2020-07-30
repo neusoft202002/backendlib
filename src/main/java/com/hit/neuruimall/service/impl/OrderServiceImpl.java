@@ -25,6 +25,14 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public List<OrderModel> getByAllDynamic(String name, Integer minAccount, Integer maxAccount) {
+        if(name!=null && name.trim().length()>0) {
+            name="%"+name+"%";
+        }
+        return orderMapper.selectByAllDynamic(name, minAccount, maxAccount);
+    }
+
+    @Override
     public List<OrderModel> getByStatus(Integer statusId) {
         return orderMapper.selectByStatus(statusId);
     }

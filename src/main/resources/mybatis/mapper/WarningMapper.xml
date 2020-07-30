@@ -34,6 +34,51 @@
         select * from userwarning
     </select>
 
+    <select id="selectOrderWarningDynamic" resultMap="orderWarningMap">
+        select * from orderwarning
+        <where>
+            <if test="info != ''">
+                and ORDERWARNINGINFO like #{info}
+            </if>
+            <if test="startDate != null">
+                and ORDERWARNINGDATE &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and ORDERWARNINGDATE &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectStocksWarningDynamic" resultMap="stocksWarningMap">
+        select * from stockswarning
+        <where>
+            <if test="info != ''">
+                and STOCKSWARNINGINFO like #{info}
+            </if>
+            <if test="startDate != null">
+                and STOCKSWARNINGDATE &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and STOCKSWARNINGDATE &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectUserWarningDynamic" resultMap="userWarningMap">
+        select * from userwarning
+        <where>
+            <if test="info != ''">
+                and USERWARNINGINFO like #{info}
+            </if>
+            <if test="startDate != null">
+                and USERWARNINGDATE &gt;= #{startDate}
+            </if>
+            <if test="endDate != null">
+                and USERWARNINGDATE &lt;= #{endDate}
+            </if>
+        </where>
+    </select>
+
     <insert id="insertOrderWarning">
         insert into orderwarning (ORDERWARNINGINFO, ORDERWARNINGDATE) values (#{warningInfo}, #{warningDate})
     </insert>

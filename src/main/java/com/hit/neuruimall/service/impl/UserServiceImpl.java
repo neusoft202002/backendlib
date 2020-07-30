@@ -6,6 +6,7 @@ import com.hit.neuruimall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -47,5 +48,13 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void deleteById(Integer id) {
         userMapper.deleteById(id);
+    }
+
+    @Override
+    public List<UserModel> getDynamic(String username, Integer minAge, Integer maxAge, Date startDate, Date endDate) {
+        if(username!=null && username.trim().length()>0) {
+            username="%"+username+"%";
+        }
+        return userMapper.selectDynamic(username, minAge, maxAge, startDate, endDate);
     }
 }
